@@ -14,3 +14,7 @@
 	path = server-ux
 	url = https://github.com/oca/server-ux.git
 	branch = 11.0
+[submodule "bank-payment"]
+	path = bank-payment
+	url = https://github.com/oca/bank-payment.git
+	branch = 11.0
