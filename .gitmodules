@@ -18,10 +18,6 @@
 	path = server-ux
 	url = https://github.com/oca/server-ux.git
 	branch = 12.0
-[submodule "web"]
-	path = web
-	url = https://github.com/oca/web.git
-	branch = 12.0
 [submodule "community-data-files"]
 	path = community-data-files
 	url = https://github.com/oca/community-data-files.git
