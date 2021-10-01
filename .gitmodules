@@ -26,3 +26,7 @@
 	path = partner-contact
 	url = https://github.com/oca/partner-contact
 	branch = 14.0
+[submodule "account-financial-tools"]
+	path = account-financial-tools
+	url = https://github.com/oca/account-financial-tools
+	branch = 14.0
