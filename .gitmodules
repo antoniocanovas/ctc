@@ -30,3 +30,7 @@
 	path = account-financial-tools
 	url = https://github.com/oca/account-financial-tools
 	branch = 14.0
+[submodule "website"]
+	path = website
+	url = https://github.com/oca/website.git
+	branch = 14.0
