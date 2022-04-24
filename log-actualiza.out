@@ -1,389 +1,450 @@
 ./account-financial-tools
 From https://github.com/oca/account-financial-tools
  * branch                14.0       -> FETCH_HEAD
-Updating 7c3346f56..b164007f5
+Updating b164007f5..80f18ce69
 Fast-forward
- .copier-answers.yml                                |   5 +-
- .eslintrc.yml                                      |   2 +-
- .github/workflows/pre-commit.yml                   |  29 +-
- .pre-commit-config.yaml                            |   6 +-
- README.md                                          |   9 +-
+ .copier-answers.yml                                |   7 +-
+ .github/workflows/test.yml                         |  69 ++++
+ .travis.yml                                        |  42 --
+ README.md                                          |  14 +-
  account_asset_management/__manifest__.py           |   2 +-
- account_asset_management/models/account_asset.py   |   2 +-
- account_asset_management/models/account_move.py    |   4 +-
- .../report/account_asset_report_xls.py             |   2 +-
- .../tests/test_asset_management_xls.py             |   2 +-
- .../views/account_move_line_view.xml               |   4 +-
- account_check_deposit/tests/test_check_deposit.py  |   4 +-
- .../tests/test_journal_lock_date.py                |   2 +-
- account_move_fiscal_year/README.rst                |  89 +++++
- account_move_fiscal_year/__init__.py               |   2 +
- account_move_fiscal_year/__manifest__.py           |  19 +
- .../i18n/account_move_fiscal_year.pot              |  58 +++
- account_move_fiscal_year/i18n/am.po                |  66 ++++
- account_move_fiscal_year/i18n/ar.po                |  43 ++
- account_move_fiscal_year/i18n/ca.po                |  43 ++
- account_move_fiscal_year/i18n/de.po                |  45 +++
- account_move_fiscal_year/i18n/es.po                |  45 +++
- account_move_fiscal_year/i18n/es_CO.po             |  45 +++
- account_move_fiscal_year/i18n/es_EC.po             |  42 ++
- account_move_fiscal_year/i18n/fr.po                |  45 +++
- account_move_fiscal_year/i18n/fr_FR.po             |  44 +++
- account_move_fiscal_year/i18n/gl.po                |  43 ++
- account_move_fiscal_year/i18n/hr.po                |  45 +++
- account_move_fiscal_year/i18n/hr_HR.po             |  45 +++
- account_move_fiscal_year/i18n/it.po                |  43 ++
- account_move_fiscal_year/i18n/nl.po                |  43 ++
- account_move_fiscal_year/i18n/pt.po                |  44 +++
- account_move_fiscal_year/i18n/pt_BR.po             |  45 +++
- account_move_fiscal_year/i18n/pt_PT.po             |  44 +++
- account_move_fiscal_year/i18n/sl.po                |  45 +++
- account_move_fiscal_year/i18n/tr_TR.po             |  42 ++
- account_move_fiscal_year/models/__init__.py        |   5 +
- account_move_fiscal_year/models/account_move.py    |  50 +++
+ account_asset_management/i18n/it.po                |  15 +-
+ .../tests/test_account_asset_management.py         |   6 +-
+ .../tests/test_asset_management_xls.py             |   2 +
+ .../wizard/account_asset_remove.py                 |   9 +-
+ account_asset_transfer/__manifest__.py             |   2 +-
+ .../tests/test_account_asset_transfer.py           |   2 +
+ account_chart_update/i18n/es.po                    |  12 +-
+ account_chart_update/i18n/it.po                    |  11 +-
+ account_check_deposit/i18n/it.po                   |  10 +-
+ account_fiscal_year/__manifest__.py                |   7 +-
+ account_fiscal_year/data/date_range_type.xml       |   7 +
+ account_fiscal_year/i18n/account_fiscal_year.pot   |   1 +
+ account_fiscal_year/i18n/fr.po                     |   1 +
+ account_fiscal_year/i18n/fr_FR.po                  |   1 +
+ account_fiscal_year/i18n/it.po                     |   1 +
+ account_fiscal_year/i18n/nl.po                     |   1 +
+ account_fiscal_year/security/ir.model.access.csv   |   2 +-
+ account_journal_lock_date/__manifest__.py          |   2 +-
+ account_journal_lock_date/i18n/it.po               |  13 +-
+ .../tests/test_journal_lock_date.py                |   2 +
+ account_loan/i18n/it.po                            |  11 +-
+ account_lock_date_update/i18n/it.po                |  11 +-
+ account_menu/i18n/it.po                            |   4 +-
+ account_move_fiscal_month/README.rst               |  78 ++++
+ account_move_fiscal_month/__init__.py              |   1 +
+ account_move_fiscal_month/__manifest__.py          |  13 +
+ .../i18n/account_move_fiscal_month.pot             |  50 +++
+ account_move_fiscal_month/i18n/am.po               |  38 ++
+ account_move_fiscal_month/i18n/ca.po               |  38 ++
+ account_move_fiscal_month/i18n/de.po               |  40 ++
+ account_move_fiscal_month/i18n/es.po               |  38 ++
+ account_move_fiscal_month/i18n/es_EC.po            |  37 ++
+ account_move_fiscal_month/i18n/fr.po               |  38 ++
+ account_move_fiscal_month/i18n/gl.po               |  38 ++
+ account_move_fiscal_month/i18n/hr.po               |  40 ++
+ account_move_fiscal_month/i18n/hr_HR.po            |  40 ++
+ account_move_fiscal_month/i18n/it.po               |  38 ++
+ account_move_fiscal_month/i18n/nl.po               |  38 ++
+ account_move_fiscal_month/i18n/pt.po               |  39 ++
+ account_move_fiscal_month/i18n/pt_BR.po            |  40 ++
+ account_move_fiscal_month/i18n/pt_PT.po            |  39 ++
+ account_move_fiscal_month/i18n/sl.po               |  40 ++
+ account_move_fiscal_month/i18n/tr_TR.po            |  37 ++
+ account_move_fiscal_month/models/__init__.py       |   2 +
+ account_move_fiscal_month/models/account_move.py   |  50 +++
  .../models/account_move_line.py                    |  13 +
- account_move_fiscal_year/models/res_company.py     |  24 ++
- account_move_fiscal_year/readme/CONFIGURE.rst      |   1 +
- account_move_fiscal_year/readme/CONTRIBUTORS.rst   |   1 +
- account_move_fiscal_year/readme/DESCRIPTION.rst    |   1 +
- account_move_fiscal_year/readme/INSTALL.rst        |   1 +
- account_move_fiscal_year/readme/USAGE.rst          |   2 +
+ account_move_fiscal_month/readme/CONFIGURE.rst     |   1 +
+ account_move_fiscal_month/readme/CONTRIBUTORS.rst  |   1 +
+ account_move_fiscal_month/readme/DESCRIPTION.rst   |   1 +
  .../static/description/icon.png                    | Bin 0 -> 9455 bytes
- .../static/description/index.html                  | 435 +++++++++++++++++++++
- account_move_fiscal_year/tests/__init__.py         |   3 +
- .../tests/test_account_move_fiscal_year.py         | 169 ++++++++
- account_move_fiscal_year/views/account_move.xml    |  48 +++
- .../views/account_move_line.xml                    |  50 +++
- .../tests/test_account_move_line_purchase_info.py  |   2 +-
- account_move_line_sale_info/hooks.py               |   2 +-
- .../tests/test_account_move_line_sale_info.py      |   2 +-
- .../tests/test_account_move_template_options.py    |   6 +-
- .../tests/test_product_category_tax.py             |   6 +-
+ .../static/description/index.html                  | 424 +++++++++++++++++++++
+ account_move_fiscal_month/tests/__init__.py        |   1 +
+ .../tests/test_account_move_fiscal_month.py        | 196 ++++++++++
+ account_move_fiscal_month/views/account_move.xml   |  35 ++
+ .../views/account_move_line.xml                    |  41 ++
+ account_move_template/i18n/it.po                   |   6 +-
+ account_netting/i18n/it.po                         |  11 +-
  setup/_metapackage/VERSION.txt                     |   2 +-
  setup/_metapackage/setup.py                        |   1 +
- .../odoo/addons/account_move_fiscal_year           |   1 +
- setup/account_move_fiscal_year/setup.py            |   6 +
- 60 files changed, 1894 insertions(+), 35 deletions(-)
- create mode 100644 account_move_fiscal_year/README.rst
- create mode 100644 account_move_fiscal_year/__init__.py
- create mode 100644 account_move_fiscal_year/__manifest__.py
- create mode 100644 account_move_fiscal_year/i18n/account_move_fiscal_year.pot
- create mode 100644 account_move_fiscal_year/i18n/am.po
- create mode 100644 account_move_fiscal_year/i18n/ar.po
- create mode 100644 account_move_fiscal_year/i18n/ca.po
- create mode 100644 account_move_fiscal_year/i18n/de.po
- create mode 100644 account_move_fiscal_year/i18n/es.po
- create mode 100644 account_move_fiscal_year/i18n/es_CO.po
- create mode 100644 account_move_fiscal_year/i18n/es_EC.po
- create mode 100644 account_move_fiscal_year/i18n/fr.po
- create mode 100644 account_move_fiscal_year/i18n/fr_FR.po
- create mode 100644 account_move_fiscal_year/i18n/gl.po
- create mode 100644 account_move_fiscal_year/i18n/hr.po
- create mode 100644 account_move_fiscal_year/i18n/hr_HR.po
- create mode 100644 account_move_fiscal_year/i18n/it.po
- create mode 100644 account_move_fiscal_year/i18n/nl.po
- create mode 100644 account_move_fiscal_year/i18n/pt.po
- create mode 100644 account_move_fiscal_year/i18n/pt_BR.po
- create mode 100644 account_move_fiscal_year/i18n/pt_PT.po
- create mode 100644 account_move_fiscal_year/i18n/sl.po
- create mode 100644 account_move_fiscal_year/i18n/tr_TR.po
- create mode 100644 account_move_fiscal_year/models/__init__.py
- create mode 100644 account_move_fiscal_year/models/account_move.py
- create mode 100644 account_move_fiscal_year/models/account_move_line.py
- create mode 100644 account_move_fiscal_year/models/res_company.py
- create mode 100644 account_move_fiscal_year/readme/CONFIGURE.rst
- create mode 100644 account_move_fiscal_year/readme/CONTRIBUTORS.rst
- create mode 100644 account_move_fiscal_year/readme/DESCRIPTION.rst
- create mode 100644 account_move_fiscal_year/readme/INSTALL.rst
- create mode 100644 account_move_fiscal_year/readme/USAGE.rst
- create mode 100644 account_move_fiscal_year/static/description/icon.png
- create mode 100644 account_move_fiscal_year/static/description/index.html
- create mode 100644 account_move_fiscal_year/tests/__init__.py
- create mode 100644 account_move_fiscal_year/tests/test_account_move_fiscal_year.py
- create mode 100644 account_move_fiscal_year/views/account_move.xml
- create mode 100644 account_move_fiscal_year/views/account_move_line.xml
- create mode 120000 setup/account_move_fiscal_year/odoo/addons/account_move_fiscal_year
- create mode 100644 setup/account_move_fiscal_year/setup.py
+ .../odoo/addons/account_move_fiscal_month          |   1 +
+ setup/account_move_fiscal_month/setup.py           |   6 +
+ test-requirements.txt                              |   1 -
+ 67 files changed, 1706 insertions(+), 114 deletions(-)
+ create mode 100644 .github/workflows/test.yml
+ delete mode 100644 .travis.yml
+ create mode 100644 account_fiscal_year/data/date_range_type.xml
+ create mode 100644 account_move_fiscal_month/README.rst
+ create mode 100644 account_move_fiscal_month/__init__.py
+ create mode 100644 account_move_fiscal_month/__manifest__.py
+ create mode 100644 account_move_fiscal_month/i18n/account_move_fiscal_month.pot
+ create mode 100644 account_move_fiscal_month/i18n/am.po
+ create mode 100644 account_move_fiscal_month/i18n/ca.po
+ create mode 100644 account_move_fiscal_month/i18n/de.po
+ create mode 100644 account_move_fiscal_month/i18n/es.po
+ create mode 100644 account_move_fiscal_month/i18n/es_EC.po
+ create mode 100644 account_move_fiscal_month/i18n/fr.po
+ create mode 100644 account_move_fiscal_month/i18n/gl.po
+ create mode 100644 account_move_fiscal_month/i18n/hr.po
+ create mode 100644 account_move_fiscal_month/i18n/hr_HR.po
+ create mode 100644 account_move_fiscal_month/i18n/it.po
+ create mode 100644 account_move_fiscal_month/i18n/nl.po
+ create mode 100644 account_move_fiscal_month/i18n/pt.po
+ create mode 100644 account_move_fiscal_month/i18n/pt_BR.po
+ create mode 100644 account_move_fiscal_month/i18n/pt_PT.po
+ create mode 100644 account_move_fiscal_month/i18n/sl.po
+ create mode 100644 account_move_fiscal_month/i18n/tr_TR.po
+ create mode 100644 account_move_fiscal_month/models/__init__.py
+ create mode 100644 account_move_fiscal_month/models/account_move.py
+ create mode 100644 account_move_fiscal_month/models/account_move_line.py
+ create mode 100644 account_move_fiscal_month/readme/CONFIGURE.rst
+ create mode 100644 account_move_fiscal_month/readme/CONTRIBUTORS.rst
+ create mode 100644 account_move_fiscal_month/readme/DESCRIPTION.rst
+ create mode 100644 account_move_fiscal_month/static/description/icon.png
+ create mode 100644 account_move_fiscal_month/static/description/index.html
+ create mode 100644 account_move_fiscal_month/tests/__init__.py
+ create mode 100644 account_move_fiscal_month/tests/test_account_move_fiscal_month.py
+ create mode 100644 account_move_fiscal_month/views/account_move.xml
+ create mode 100644 account_move_fiscal_month/views/account_move_line.xml
+ create mode 120000 setup/account_move_fiscal_month/odoo/addons/account_move_fiscal_month
+ create mode 100644 setup/account_move_fiscal_month/setup.py
 ./bank-payment
 From https://github.com/oca/bank-payment
  * branch              14.0       -> FETCH_HEAD
-Updating 809e6dc6..21ef9bd7
+Updating 21ef9bd7..ea3846c4
 Fast-forward
- .copier-answers.yml                                |  5 +++-
- .eslintrc.yml                                      |  2 +-
- .github/workflows/pre-commit.yml                   | 29 ++++++++++++++++------
- .pre-commit-config.yaml                            |  6 ++---
- README.md                                          |  6 ++---
- .../tests/test_sdd.py                              |  2 +-
- account_payment_order/i18n/sv.po                   |  6 ++---
- 7 files changed, 37 insertions(+), 19 deletions(-)
+ .copier-answers.yml                                |  8 +-
+ .github/workflows/test.yml                         | 69 +++++++++++++++
+ .travis.yml                                        | 42 ----------
+ README.md                                          | 17 ++--
+ account_banking_mandate_sale/i18n/ca.po            |  6 +-
+ account_banking_sepa_direct_debit/__manifest__.py  |  2 +-
+ .../models/account_banking_mandate.py              | 21 +++--
+ account_payment_mode/README.rst                    |  4 +-
+ account_payment_mode/__manifest__.py               |  4 +-
+ account_payment_mode/static/description/index.html |  2 +-
+ account_payment_order/README.rst                   |  6 +-
+ account_payment_order/__manifest__.py              |  3 +-
+ account_payment_order/i18n/ca.po                   | 21 ++---
+ account_payment_order/models/account_move_line.py  | 24 ++++--
+ account_payment_order/readme/CONTRIBUTORS.rst      |  2 +
+ .../static/description/index.html                  |  3 +-
+ .../tests/test_account_payment.py                  |  2 +
+ .../tests/test_payment_order_inbound.py            |  3 +-
+ .../tests/test_payment_order_outbound.py           | 98 ++++++++++++++++++++--
+ account_payment_order_return/__manifest__.py       |  2 +-
+ .../tests/test_account_payment_order_return.py     |  4 +-
+ account_payment_partner/README.rst                 |  4 +-
+ account_payment_partner/__manifest__.py            |  3 +-
+ account_payment_partner/i18n/ca.po                 | 30 +++----
+ .../static/description/index.html                  |  2 +-
+ account_payment_purchase/i18n/ca.po                |  8 +-
+ account_payment_purchase/i18n/it.po                |  9 +-
+ account_payment_sale/i18n/ca.po                    | 15 ++--
+ 28 files changed, 277 insertions(+), 137 deletions(-)
+ create mode 100644 .github/workflows/test.yml
+ delete mode 100644 .travis.yml
 ./community-data-files
 From https://github.com/oca/community-data-files
  * branch            14.0       -> FETCH_HEAD
-Updating 2324707..e01a13a
+Updating e01a13a..5a2eaaa
 Fast-forward
- .copier-answers.yml              |  5 ++++-
- .eslintrc.yml                    |  2 +-
- .github/workflows/pre-commit.yml | 29 ++++++++++++++++++++++-------
- .pre-commit-config.yaml          |  6 +++---
- README.md                        |  6 +++---
- 5 files changed, 33 insertions(+), 15 deletions(-)
+ README.md                                  | 2 +-
+ base_iso3166/README.rst                    | 4 ++--
+ base_iso3166/__manifest__.py               | 3 ++-
+ base_iso3166/static/description/index.html | 2 +-
+ 4 files changed, 6 insertions(+), 5 deletions(-)
 ./l10n-spain
 From https://github.com/oca/l10n-spain
  * branch                14.0       -> FETCH_HEAD
-Updating feb035c2c..1bb767a25
+Updating 1bb767a25..cb6b2b672
 Fast-forward
- .copier-answers.yml                                |   5 +-
- .eslintrc.yml                                      |   2 +-
- .github/workflows/pre-commit.yml                   |  29 +-
- .github/workflows/test.yml                         |  25 +-
- .pre-commit-config.yaml                            |   6 +-
- .t2d.yml                                           |  42 --
- README.md                                          |  14 +-
- l10n_es_account_asset/models/account_asset.py      |   4 +-
- .../models/account_payment_order.py                |   2 +-
- l10n_es_aeat/models/l10n_es_aeat_report.py         |   2 +-
- .../tests/test_l10n_es_aeat_certificate.py         |   4 +-
- l10n_es_aeat/wizard/compare_boe_file.py            |   2 +-
- l10n_es_aeat/wizard/export_to_boe.py               |   2 +-
- l10n_es_aeat_mod303/__manifest__.py                |   2 +-
- .../data/2022/aeat.model.export.config.csv         |   6 +-
- l10n_es_aeat_mod303/models/mod303.py               |  60 +--
- l10n_es_aeat_mod347/models/mod347.py               |  18 +-
- l10n_es_aeat_sii_oca/__manifest__.py               |   2 +-
- l10n_es_aeat_sii_oca/models/account_move.py        |   9 +-
- l10n_es_aeat_vat_prorrate/models/mod303.py         |   2 +-
- l10n_es_facturae_efact/README.rst                  | 109 +++++
- l10n_es_facturae_efact/__init__.py                 |   4 +
- l10n_es_facturae_efact/__manifest__.py             |  16 +
- l10n_es_facturae_efact/components/__init__.py      |   1 +
- ...0n_es_facturae_l10n_es_facturae_efact_update.py | 122 ++++++
- l10n_es_facturae_efact/data/efact_data.xml         |  50 +++
- l10n_es_facturae_efact/i18n/ca.po                  | 211 ++++++++++
- l10n_es_facturae_efact/i18n/es.po                  | 222 ++++++++++
- .../i18n/l10n_es_facturae_efact.pot                | 111 +++++
- l10n_es_facturae_efact/models/__init__.py          |   4 +
- l10n_es_facturae_efact/models/account_move.py      |  30 ++
- .../models/edi_exchange_record.py                  |  54 +++
- l10n_es_facturae_efact/readme/CONFIG.rst           |   5 +
- l10n_es_facturae_efact/readme/CONTRIBUTORS.rst     |   6 +
- l10n_es_facturae_efact/readme/DESCRIPTION.rst      |   8 +
- l10n_es_facturae_efact/readme/INSTALL.rst          |  11 +
- l10n_es_facturae_efact/readme/ROADMAP.rst          |   5 +
- l10n_es_facturae_efact/static/description/icon.png | Bin 0 -> 6780 bytes
- .../static/description/index.html                  | 451 +++++++++++++++++++++
- l10n_es_facturae_efact/tests/__init__.py           |   1 +
- l10n_es_facturae_efact/tests/result.xml            |  39 ++
- l10n_es_facturae_efact/tests/result_02.xml         |  13 +
- l10n_es_facturae_efact/tests/test_efact.py         | 386 ++++++++++++++++++
- l10n_es_facturae_face/__manifest__.py              |   2 +-
- l10n_es_facturae_face/data/face_data.xml           |   1 +
- .../migrations/14.0.1.2.0/noupdate_changes.xml     |   6 +
- .../migrations/14.0.1.2.0/post-migration.py        |  11 +
- l10n_es_facturae_face/tests/test_facturae_face.py  |   4 +-
- l10n_es_facturae_sale_stock/README.rst             |  83 ++++
- l10n_es_facturae_sale_stock/__init__.py            |   3 +
- l10n_es_facturae_sale_stock/__manifest__.py        |  21 +
- .../i18n/l10n_es_facturae_sale_stock.pot           |  34 ++
- l10n_es_facturae_sale_stock/models/__init__.py     |   3 +
- .../models/account_move_line.py                    |  12 +
- .../readme/CONTRIBUTORS.rst                        |   4 +
- l10n_es_facturae_sale_stock/readme/DESCRIPTION.rst |   1 +
- l10n_es_facturae_sale_stock/readme/INSTALL.rst     |   2 +
- .../static/description/icon.png                    | Bin 0 -> 9455 bytes
- .../static/description/index.html                  | 430 ++++++++++++++++++++
- .../views/report_facturae.xml                      |  27 ++
- l10n_es_partner/wizard/l10n_es_partner_wizard.xml  |   1 +
- l10n_es_partner_mercantil/__manifest__.py          |   2 +-
- l10n_es_ticketbai_api/tests/common.py              |   4 +-
- .../wizard/l10n_es_toponyms_wizard.xml             |   1 +
- l10n_es_vat_book/report/vat_book_xlsx.py           |   6 +-
- payment_redsys/controllers/main.py                 |   2 +-
- payment_redsys/tests/test_redsys.py                |  10 +-
- requirements.txt                                   |   2 +
- setup/_metapackage/VERSION.txt                     |   2 +-
- setup/_metapackage/setup.py                        |   2 +
- .../odoo/addons/l10n_es_facturae_efact             |   1 +
- setup/l10n_es_facturae_efact/setup.py              |   6 +
- .../odoo/addons/l10n_es_facturae_sale_stock        |   1 +
- setup/l10n_es_facturae_sale_stock/setup.py         |   6 +
- 74 files changed, 2652 insertions(+), 135 deletions(-)
- delete mode 100644 .t2d.yml
- create mode 100644 l10n_es_facturae_efact/README.rst
- create mode 100644 l10n_es_facturae_efact/__init__.py
- create mode 100644 l10n_es_facturae_efact/__manifest__.py
- create mode 100644 l10n_es_facturae_efact/components/__init__.py
- create mode 100644 l10n_es_facturae_efact/components/edi_input_process_l10n_es_facturae_l10n_es_facturae_efact_update.py
- create mode 100644 l10n_es_facturae_efact/data/efact_data.xml
- create mode 100644 l10n_es_facturae_efact/i18n/ca.po
- create mode 100644 l10n_es_facturae_efact/i18n/es.po
- create mode 100644 l10n_es_facturae_efact/i18n/l10n_es_facturae_efact.pot
- create mode 100644 l10n_es_facturae_efact/models/__init__.py
- create mode 100644 l10n_es_facturae_efact/models/account_move.py
- create mode 100644 l10n_es_facturae_efact/models/edi_exchange_record.py
- create mode 100644 l10n_es_facturae_efact/readme/CONFIG.rst
- create mode 100644 l10n_es_facturae_efact/readme/CONTRIBUTORS.rst
- create mode 100644 l10n_es_facturae_efact/readme/DESCRIPTION.rst
- create mode 100644 l10n_es_facturae_efact/readme/INSTALL.rst
- create mode 100644 l10n_es_facturae_efact/readme/ROADMAP.rst
- create mode 100644 l10n_es_facturae_efact/static/description/icon.png
- create mode 100644 l10n_es_facturae_efact/static/description/index.html
- create mode 100644 l10n_es_facturae_efact/tests/__init__.py
- create mode 100644 l10n_es_facturae_efact/tests/result.xml
- create mode 100644 l10n_es_facturae_efact/tests/result_02.xml
- create mode 100644 l10n_es_facturae_efact/tests/test_efact.py
- create mode 100644 l10n_es_facturae_face/migrations/14.0.1.2.0/noupdate_changes.xml
- create mode 100644 l10n_es_facturae_face/migrations/14.0.1.2.0/post-migration.py
- create mode 100644 l10n_es_facturae_sale_stock/README.rst
- create mode 100644 l10n_es_facturae_sale_stock/__init__.py
- create mode 100644 l10n_es_facturae_sale_stock/__manifest__.py
- create mode 100644 l10n_es_facturae_sale_stock/i18n/l10n_es_facturae_sale_stock.pot
- create mode 100644 l10n_es_facturae_sale_stock/models/__init__.py
- create mode 100644 l10n_es_facturae_sale_stock/models/account_move_line.py
- create mode 100644 l10n_es_facturae_sale_stock/readme/CONTRIBUTORS.rst
- create mode 100644 l10n_es_facturae_sale_stock/readme/DESCRIPTION.rst
- create mode 100644 l10n_es_facturae_sale_stock/readme/INSTALL.rst
- create mode 100644 l10n_es_facturae_sale_stock/static/description/icon.png
- create mode 100644 l10n_es_facturae_sale_stock/static/description/index.html
- create mode 100644 l10n_es_facturae_sale_stock/views/report_facturae.xml
- create mode 120000 setup/l10n_es_facturae_efact/odoo/addons/l10n_es_facturae_efact
- create mode 100644 setup/l10n_es_facturae_efact/setup.py
- create mode 120000 setup/l10n_es_facturae_sale_stock/odoo/addons/l10n_es_facturae_sale_stock
- create mode 100644 setup/l10n_es_facturae_sale_stock/setup.py
+ README.md                                          |  4 ++--
+ l10n_es_aeat_mod115/__manifest__.py                |  2 +-
+ .../tests/test_l10n_es_aeat_mod115.py              |  5 +++--
+ .../tests/test_l10n_es_intrastat_report.py         |  2 ++
+ l10n_es_vat_book/__manifest__.py                   |  2 +-
+ l10n_es_vat_book/models/l10n_es_vat_book.py        | 22 +++++++++++++++-------
+ .../tests/test_l10n_es_aeat_vat_book.py            | 19 +++++++++++++++++--
+ 7 files changed, 41 insertions(+), 15 deletions(-)
 ./partner-contact
 From https://github.com/oca/partner-contact
  * branch                14.0       -> FETCH_HEAD
-Updating d0ab2c4dd..46e929f0b
+Updating 46e929f0b..74618f7bd
 Fast-forward
- .copier-answers.yml                                |  5 +++-
- .eslintrc.yml                                      |  2 +-
- .github/workflows/pre-commit.yml                   | 29 ++++++++++++++++------
- .pre-commit-config.yaml                            |  6 ++---
- README.md                                          |  6 ++---
- .../tests/test_base_location_nuts.py               |  2 +-
- partner_address_street3/hooks.py                   |  4 +--
- .../tests/test_address_version.py                  | 10 ++++----
- partner_contact_department/tests/test_recursion.py |  2 +-
- .../tests/test_partner_email_check.py              |  4 +--
- partner_firstname/tests/test_copy.py               | 26 +++++++++----------
- .../tests/test_partner_identification.py           |  2 +-
- partner_identification/tests/test_res_partner.py   | 12 ++++-----
- .../models/res_partner_industry.py                 |  2 +-
- .../tests/test_partner_pricelist_search.py         | 10 ++++----
- partner_second_lastname/models/res_partner.py      |  4 +--
- 16 files changed, 71 insertions(+), 55 deletions(-)
+ partner_manual_rank/i18n/pt.po | 49 ++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 49 insertions(+)
+ create mode 100644 partner_manual_rank/i18n/pt.po
 ./server-tools
 From https://github.com/oca/server-tools
  * branch                14.0       -> FETCH_HEAD
-Updating 1a7cb180b..e6c12d43b
+Updating e6c12d43b..642450804
 Fast-forward
- .copier-answers.yml                                |   5 +-
- .eslintrc.yml                                      |   2 +-
- .github/workflows/pre-commit.yml                   |  12 +-
- .github/workflows/test.yml                         |   3 +-
- .pre-commit-config.yaml                            |   6 +-
- README.md                                          |   6 +-
- attachment_unindex_content/i18n/es_AR.po           |  37 +++++
- auditlog/models/log.py                             |   2 +-
- auditlog/tests/test_auditlog.py                    |   2 +-
- auto_backup/tests/test_db_backup.py                |  40 ++---
- base_changeset/models/record_changeset_change.py   |   4 +-
- base_changeset/tests/test_changeset_field_type.py  |  46 +++---
- base_changeset/tests/test_changeset_flow.py        |  32 ++--
- base_changeset/tests/test_changeset_origin.py      |   4 +-
- base_cron_exclusion/i18n/es_AR.po                  |  49 ++++++
- base_custom_info/models/custom_info.py             |   4 +-
- base_custom_info/models/custom_info_value.py       |   2 +-
- base_custom_info/tests/test_partner.py             |   4 +-
- base_exception/models/base_exception.py            |   2 +-
- base_kanban_stage/i18n/es_AR.po                    | 119 ++++++++------
- .../models/ir_model_access.py                      |   2 +-
- .../tests/test_name_search.py                      |   4 +-
- base_remote/i18n/es_AR.po                          | 139 ++++++++++++++++
- base_search_fuzzy/models/query.py                  |   2 +-
- base_video_link/i18n/es_AR.po                      | 171 ++++++++++++++++++++
- excel_import_export/models/common.py               |  12 +-
- excel_import_export/models/styles.py               |   2 +-
- excel_import_export/models/xlsx_export.py          |   4 +-
- excel_import_export/models/xlsx_import.py          |  12 +-
- excel_import_export/models/xlsx_report.py          |   2 +-
- excel_import_export/models/xlsx_template.py        |   2 +-
- excel_import_export/wizard/import_xlsx_wizard.py   |   2 +-
- .../tests/test_xlsx_import_export.py               |   4 +-
- excel_import_export_demo/tests/test_xlsx_report.py |   2 +-
- .../tests/test_xlsx_template.py                    |   4 +-
- html_image_url_extractor/tests/test_extractor.py   |   2 +-
- html_text/models/ir_fields_converter.py            |   6 +-
- html_text/tests/test_extractor.py                  |  10 +-
- module_prototyper/__manifest__.py                  |   2 +-
- module_prototyper/i18n/es_AR.po                    | 178 ++++++++++++---------
- module_prototyper/models/licenses.py               |   2 +-
- module_prototyper/models/module_prototyper.py      |   4 +-
- onchange_helper/i18n/es_AR.po                      |  22 +++
- sql_request_abstract/__manifest__.py               |   2 +-
- sql_request_abstract/models/sql_request_mixin.py   |   7 +-
- upgrade_analysis/models/upgrade_record.py          |   4 +-
- upgrade_analysis/odoo_patch/addons/mrp/__init__.py |   2 +-
- .../odoo_patch/addons/point_of_sale/__init__.py    |   2 +-
- .../odoo_patch/addons/stock/__init__.py            |   2 +-
- .../odoo_patch/odoo/addons/base/models/ir_model.py |   2 +-
- upgrade_analysis/odoo_patch/odoo/models.py         |   2 +-
- 51 files changed, 738 insertions(+), 256 deletions(-)
- create mode 100644 attachment_unindex_content/i18n/es_AR.po
- create mode 100644 base_cron_exclusion/i18n/es_AR.po
- create mode 100644 base_remote/i18n/es_AR.po
- create mode 100644 base_video_link/i18n/es_AR.po
- create mode 100644 onchange_helper/i18n/es_AR.po
+ README.md                                          |   8 +-
+ attachment_queue/README.rst                        | 110 ++++
+ attachment_queue/__init__.py                       |   1 +
+ attachment_queue/__manifest__.py                   |  23 +
+ attachment_queue/data/cron.xml                     |  16 +
+ attachment_queue/data/ir_config_parameter.xml      |   7 +
+ attachment_queue/data/mail_template.xml            |  18 +
+ attachment_queue/demo/attachment_queue_demo.xml    |   9 +
+ attachment_queue/i18n/attachment_queue.pot         | 486 ++++++++++++++++++
+ attachment_queue/models/__init__.py                |   1 +
+ attachment_queue/models/attachment_queue.py        | 106 ++++
+ attachment_queue/readme/CONTRIBUTORS.rst           |   5 +
+ attachment_queue/readme/DESCRIPTION.rst            |   3 +
+ attachment_queue/readme/USAGE.rst                  |  16 +
+ attachment_queue/security/ir.model.access.csv      |   3 +
+ attachment_queue/static/description/form.png       | Bin 0 -> 76955 bytes
+ attachment_queue/static/description/icon.png       | Bin 0 -> 9455 bytes
+ attachment_queue/static/description/index.html     | 437 ++++++++++++++++
+ attachment_queue/static/description/tree.png       | Bin 0 -> 42403 bytes
+ attachment_queue/tests/__init__.py                 |   3 +
+ attachment_queue/tests/test_attachment_queue.py    |  35 ++
+ attachment_queue/views/attachment_queue_view.xml   | 153 ++++++
+ attachment_synchronize/README.rst                  | 126 +++++
+ attachment_synchronize/__init__.py                 |   1 +
+ attachment_synchronize/__manifest__.py             |  28 ++
+ attachment_synchronize/data/cron.xml               |  16 +
+ .../demo/attachment_synchronize_task_demo.xml      |  24 +
+ .../i18n/attachment_synchronize.pot                | 393 +++++++++++++++
+ attachment_synchronize/models/__init__.py          |   1 +
+ attachment_synchronize/models/attachment_queue.py  |  40 ++
+ .../models/attachment_synchronize_task.py          | 230 +++++++++
+ attachment_synchronize/models/storage_backend.py   |  67 +++
+ attachment_synchronize/readme/CONTRIBUTORS.rst     |  10 +
+ attachment_synchronize/readme/DESCRIPTION.rst      |   5 +
+ attachment_synchronize/readme/USAGE.rst            |  19 +
+ .../security/ir.model.access.csv                   |   2 +
+ .../static/description/export_task.png             | Bin 0 -> 62223 bytes
+ attachment_synchronize/static/description/icon.png | Bin 0 -> 9455 bytes
+ .../static/description/import_task.png             | Bin 0 -> 69921 bytes
+ .../static/description/index.html                  | 448 +++++++++++++++++
+ attachment_synchronize/tests/__init__.py           |   2 +
+ attachment_synchronize/tests/common.py             |  43 ++
+ attachment_synchronize/tests/test_export.py        |  43 ++
+ attachment_synchronize/tests/test_import.py        |  81 +++
+ .../views/attachment_queue_views.xml               |  58 +++
+ .../views/attachment_synchronize_task_views.xml    | 231 +++++++++
+ .../views/storage_backend_views.xml                |  34 ++
+ .../i18n/autovacuum_message_attachment.pot         |   4 +
+ autovacuum_message_attachment/i18n/ca.po           |   4 +
+ autovacuum_message_attachment/i18n/fr.po           |   4 +
+ base_changeset/i18n/base_changeset.pot             |  15 +
+ base_changeset/i18n/ca.po                          |  15 +
+ base_changeset/i18n/es.po                          |  15 +
+ base_changeset/i18n/it.po                          |  15 +
+ base_generate_code/README.rst                      |  95 ++++
+ base_generate_code/__init__.py                     |   1 +
+ base_generate_code/__manifest__.py                 |  20 +
+ base_generate_code/i18n/base_generate_code.pot     |  80 +++
+ base_generate_code/i18n/fr.po                      |  84 ++++
+ base_generate_code/models/__init__.py              |   1 +
+ base_generate_code/models/code_format_mixin.py     |  89 ++++
+ base_generate_code/readme/CONTRIBUTORS.rst         |   2 +
+ base_generate_code/readme/DESCRIPTION.rst          |   1 +
+ base_generate_code/readme/USAGE.rst                |   9 +
+ base_generate_code/security/ir.model.access.csv    |   2 +
+ base_generate_code/static/description/icon.png     | Bin 0 -> 9455 bytes
+ base_generate_code/static/description/index.html   | 435 ++++++++++++++++
+ base_generate_code/tests/__init__.py               |   1 +
+ base_generate_code/tests/fake_models.py            |  28 ++
+ base_generate_code/tests/test_code_format_mixin.py |  62 +++
+ base_jsonify/README.rst                            | 175 +------
+ base_jsonify/__init__.py                           |   1 -
+ base_jsonify/__manifest__.py                       |  24 +-
+ base_jsonify/i18n/base_jsonify.pot                 | 215 --------
+ base_jsonify/i18n/ca.po                            | 229 ---------
+ base_jsonify/i18n/zh_CN.po                         | 231 ---------
+ base_jsonify/readme/CONTRIBUTORS.rst               |   2 +
+ base_jsonify/readme/DESCRIPTION.rst                | 166 +-----
+ base_jsonify/readme/ROADMAP.rst                    |   1 +
+ base_jsonify/static/description/index.html         | 161 +-----
+ .../i18n/base_name_search_improved.pot             |   4 +-
+ base_name_search_improved/i18n/ca.po               |   4 +-
+ base_name_search_improved/i18n/de.po               |   4 +-
+ base_name_search_improved/i18n/es.po               |   4 +-
+ base_name_search_improved/i18n/es_ES.po            |   4 +-
+ base_name_search_improved/i18n/eu.po               |   4 +-
+ base_name_search_improved/i18n/fi.po               |   4 +-
+ base_name_search_improved/i18n/fr.po               |   4 +-
+ base_name_search_improved/i18n/hr.po               |   4 +-
+ base_name_search_improved/i18n/hr_HR.po            |   4 +-
+ base_name_search_improved/i18n/it.po               |   4 +-
+ base_name_search_improved/i18n/nb_NO.po            |   4 +-
+ base_name_search_improved/i18n/nl.po               |   4 +-
+ base_name_search_improved/i18n/pt_BR.po            |   4 +-
+ base_name_search_improved/i18n/sl.po               |   4 +-
+ base_name_search_improved/i18n/tr.po               |   4 +-
+ base_name_search_improved/i18n/tr_TR.po            |   4 +-
+ base_name_search_improved/i18n/zh_CN.po            |   4 +-
+ base_view_inheritance_extension/__manifest__.py    |   2 +-
+ .../models/ir_ui_view.py                           |   9 +-
+ jsonifier/README.rst                               | 245 +++++++++
+ jsonifier/__init__.py                              |   1 +
+ jsonifier/__manifest__.py                          |  26 +
+ {base_jsonify => jsonifier}/demo/export_demo.xml   |   0
+ .../demo/ir.exports.line.csv                       |   0
+ {base_jsonify => jsonifier}/demo/resolver_demo.xml |   0
+ jsonifier/i18n/ca.po                               | 236 +++++++++
+ jsonifier/i18n/jsonifier.pot                       | 235 +++++++++
+ jsonifier/i18n/zh_CN.po                            | 238 +++++++++
+ {base_jsonify => jsonifier}/models/__init__.py     |   0
+ {base_jsonify => jsonifier}/models/ir_exports.py   |   0
+ .../models/ir_exports_line.py                      |   0
+ .../models/ir_exports_resolver.py                  |   0
+ {base_jsonify => jsonifier}/models/models.py       |   0
+ {base_jsonify => jsonifier}/models/utils.py        |   0
+ jsonifier/readme/CONTRIBUTORS.rst                  |   6 +
+ jsonifier/readme/DESCRIPTION.rst                   | 166 ++++++
+ .../security/ir.model.access.csv                   |   0
+ jsonifier/static/description/icon.png              | Bin 0 -> 9455 bytes
+ jsonifier/static/description/index.html            | 555 +++++++++++++++++++++
+ {base_jsonify => jsonifier}/tests/__init__.py      |   0
+ .../tests/test_get_parser.py                       |   6 +-
+ {base_jsonify => jsonifier}/tests/test_helpers.py  |   0
+ .../tests/test_ir_exports_line.py                  |   2 +-
+ .../views/ir_exports_resolver_view.xml             |   0
+ .../views/ir_exports_view.xml                      |   0
+ setup/_metapackage/VERSION.txt                     |   2 +-
+ setup/_metapackage/setup.py                        |   4 +
+ .../attachment_queue/odoo/addons/attachment_queue  |   1 +
+ setup/attachment_queue/setup.py                    |   6 +
+ .../odoo/addons/attachment_synchronize             |   1 +
+ setup/attachment_synchronize/setup.py              |   6 +
+ .../odoo/addons/base_generate_code                 |   1 +
+ setup/base_generate_code/setup.py                  |   6 +
+ setup/jsonifier/odoo/addons/jsonifier              |   1 +
+ setup/jsonifier/setup.py                           |   6 +
+ 136 files changed, 6179 insertions(+), 1183 deletions(-)
+ create mode 100644 attachment_queue/README.rst
+ create mode 100644 attachment_queue/__init__.py
+ create mode 100644 attachment_queue/__manifest__.py
+ create mode 100644 attachment_queue/data/cron.xml
+ create mode 100644 attachment_queue/data/ir_config_parameter.xml
+ create mode 100644 attachment_queue/data/mail_template.xml
+ create mode 100644 attachment_queue/demo/attachment_queue_demo.xml
+ create mode 100644 attachment_queue/i18n/attachment_queue.pot
+ create mode 100644 attachment_queue/models/__init__.py
+ create mode 100644 attachment_queue/models/attachment_queue.py
+ create mode 100644 attachment_queue/readme/CONTRIBUTORS.rst
+ create mode 100644 attachment_queue/readme/DESCRIPTION.rst
+ create mode 100644 attachment_queue/readme/USAGE.rst
+ create mode 100644 attachment_queue/security/ir.model.access.csv
+ create mode 100644 attachment_queue/static/description/form.png
+ create mode 100644 attachment_queue/static/description/icon.png
+ create mode 100644 attachment_queue/static/description/index.html
+ create mode 100644 attachment_queue/static/description/tree.png
+ create mode 100644 attachment_queue/tests/__init__.py
+ create mode 100644 attachment_queue/tests/test_attachment_queue.py
+ create mode 100644 attachment_queue/views/attachment_queue_view.xml
+ create mode 100644 attachment_synchronize/README.rst
+ create mode 100644 attachment_synchronize/__init__.py
+ create mode 100644 attachment_synchronize/__manifest__.py
+ create mode 100644 attachment_synchronize/data/cron.xml
+ create mode 100644 attachment_synchronize/demo/attachment_synchronize_task_demo.xml
+ create mode 100644 attachment_synchronize/i18n/attachment_synchronize.pot
+ create mode 100644 attachment_synchronize/models/__init__.py
+ create mode 100644 attachment_synchronize/models/attachment_queue.py
+ create mode 100644 attachment_synchronize/models/attachment_synchronize_task.py
+ create mode 100644 attachment_synchronize/models/storage_backend.py
+ create mode 100644 attachment_synchronize/readme/CONTRIBUTORS.rst
+ create mode 100644 attachment_synchronize/readme/DESCRIPTION.rst
+ create mode 100644 attachment_synchronize/readme/USAGE.rst
+ create mode 100644 attachment_synchronize/security/ir.model.access.csv
+ create mode 100644 attachment_synchronize/static/description/export_task.png
+ create mode 100644 attachment_synchronize/static/description/icon.png
+ create mode 100644 attachment_synchronize/static/description/import_task.png
+ create mode 100644 attachment_synchronize/static/description/index.html
+ create mode 100644 attachment_synchronize/tests/__init__.py
+ create mode 100644 attachment_synchronize/tests/common.py
+ create mode 100644 attachment_synchronize/tests/test_export.py
+ create mode 100644 attachment_synchronize/tests/test_import.py
+ create mode 100644 attachment_synchronize/views/attachment_queue_views.xml
+ create mode 100644 attachment_synchronize/views/attachment_synchronize_task_views.xml
+ create mode 100644 attachment_synchronize/views/storage_backend_views.xml
+ create mode 100644 base_generate_code/README.rst
+ create mode 100644 base_generate_code/__init__.py
+ create mode 100644 base_generate_code/__manifest__.py
+ create mode 100644 base_generate_code/i18n/base_generate_code.pot
+ create mode 100644 base_generate_code/i18n/fr.po
+ create mode 100644 base_generate_code/models/__init__.py
+ create mode 100644 base_generate_code/models/code_format_mixin.py
+ create mode 100644 base_generate_code/readme/CONTRIBUTORS.rst
+ create mode 100644 base_generate_code/readme/DESCRIPTION.rst
+ create mode 100644 base_generate_code/readme/USAGE.rst
+ create mode 100644 base_generate_code/security/ir.model.access.csv
+ create mode 100644 base_generate_code/static/description/icon.png
+ create mode 100644 base_generate_code/static/description/index.html
+ create mode 100644 base_generate_code/tests/__init__.py
+ create mode 100644 base_generate_code/tests/fake_models.py
+ create mode 100644 base_generate_code/tests/test_code_format_mixin.py
+ delete mode 100644 base_jsonify/i18n/ca.po
+ delete mode 100644 base_jsonify/i18n/zh_CN.po
+ create mode 100644 base_jsonify/readme/ROADMAP.rst
+ create mode 100644 jsonifier/README.rst
+ create mode 100644 jsonifier/__init__.py
+ create mode 100644 jsonifier/__manifest__.py
+ rename {base_jsonify => jsonifier}/demo/export_demo.xml (100%)
+ rename {base_jsonify => jsonifier}/demo/ir.exports.line.csv (100%)
+ rename {base_jsonify => jsonifier}/demo/resolver_demo.xml (100%)
+ create mode 100644 jsonifier/i18n/ca.po
+ create mode 100644 jsonifier/i18n/jsonifier.pot
+ create mode 100644 jsonifier/i18n/zh_CN.po
+ rename {base_jsonify => jsonifier}/models/__init__.py (100%)
+ rename {base_jsonify => jsonifier}/models/ir_exports.py (100%)
+ rename {base_jsonify => jsonifier}/models/ir_exports_line.py (100%)
+ rename {base_jsonify => jsonifier}/models/ir_exports_resolver.py (100%)
+ rename {base_jsonify => jsonifier}/models/models.py (100%)
+ rename {base_jsonify => jsonifier}/models/utils.py (100%)
+ create mode 100644 jsonifier/readme/CONTRIBUTORS.rst
+ create mode 100644 jsonifier/readme/DESCRIPTION.rst
+ rename {base_jsonify => jsonifier}/security/ir.model.access.csv (100%)
+ create mode 100644 jsonifier/static/description/icon.png
+ create mode 100644 jsonifier/static/description/index.html
+ rename {base_jsonify => jsonifier}/tests/__init__.py (100%)
+ rename {base_jsonify => jsonifier}/tests/test_get_parser.py (98%)
+ rename {base_jsonify => jsonifier}/tests/test_helpers.py (100%)
+ rename {base_jsonify => jsonifier}/tests/test_ir_exports_line.py (97%)
+ rename {base_jsonify => jsonifier}/views/ir_exports_resolver_view.xml (100%)
+ rename {base_jsonify => jsonifier}/views/ir_exports_view.xml (100%)
+ create mode 120000 setup/attachment_queue/odoo/addons/attachment_queue
+ create mode 100644 setup/attachment_queue/setup.py
+ create mode 120000 setup/attachment_synchronize/odoo/addons/attachment_synchronize
+ create mode 100644 setup/attachment_synchronize/setup.py
+ create mode 120000 setup/base_generate_code/odoo/addons/base_generate_code
+ create mode 100644 setup/base_generate_code/setup.py
+ create mode 120000 setup/jsonifier/odoo/addons/jsonifier
+ create mode 100644 setup/jsonifier/setup.py
 ./server-ux
 From https://github.com/oca/server-ux
  * branch              14.0       -> FETCH_HEAD
-Updating 169e416f..6e8078d8
+Updating 6e8078d8..fff80281
 Fast-forward
- .copier-answers.yml                                |  5 +++-
- .eslintrc.yml                                      |  2 +-
- .github/workflows/pre-commit.yml                   | 29 ++++++++++++++++------
- .pre-commit-config.yaml                            |  6 ++---
- README.md                                          |  6 ++---
- base_export_manager/models/ir_exports.py           |  4 +--
- base_export_manager/tests/test_ir_exports.py       |  2 +-
- .../tests/test_base_import_security_group.py       |  4 +--
- .../models/ir_ui_menu.py                           |  2 +-
- base_substate/models/base_substate_mixin.py        |  2 +-
- base_technical_features/models/res_users.py        |  2 +-
- base_tier_validation/models/tier_review.py         |  2 +-
- base_tier_validation_forward/hooks.py              |  2 +-
- .../wizard/forward_wizard.py                       |  2 +-
- mass_editing/migrations/14.0.1.0.0/post-migrate.py |  2 +-
- mass_editing/migrations/14.0.1.0.0/pre-migrate.py  |  2 +-
- mass_editing/models/ir_actions_server.py           |  4 +--
- mass_editing/models/mass_editing_line.py           |  2 +-
- mass_editing/wizard/mass_editing_wizard.py         |  2 +-
- 19 files changed, 50 insertions(+), 32 deletions(-)
+ README.md                                          |   2 +-
+ base_custom_filter/i18n/fr.po                      | 130 ++++++++++++++++++++
+ base_custom_filter/i18n/it.po                      | 132 +++++++++++++++++++++
+ base_tier_validation/__manifest__.py               |   2 +-
+ base_tier_validation/i18n/base_tier_validation.pot |  33 ++++++
+ base_tier_validation/i18n/es.po                    |  33 ++++++
+ base_tier_validation/i18n/es_MX.po                 |  33 ++++++
+ base_tier_validation/i18n/fr.po                    |  33 ++++++
+ base_tier_validation/i18n/it.po                    |  33 ++++++
+ base_tier_validation/i18n/nl_NL.po                 |  33 ++++++
+ base_tier_validation/i18n/sv.po                    |  33 ++++++
+ base_tier_validation/i18n/zh_CN.po                 |  33 ++++++
+ base_tier_validation/models/tier_validation.py     |  28 +++++
+ 13 files changed, 556 insertions(+), 2 deletions(-)
+ create mode 100644 base_custom_filter/i18n/fr.po
 ./web
 From https://github.com/oca/web
  * branch              14.0       -> FETCH_HEAD
-Updating f790de2a..025a891c
+Updating 025a891c..afab6050
 Fast-forward
- .copier-answers.yml                      |  5 ++++-
- .eslintrc.yml                            |  2 +-
- .github/workflows/pre-commit.yml         | 29 ++++++++++++++++++++++-------
- .pre-commit-config.yaml                  |  6 +++---
- README.md                                |  5 +++--
- web_access_rule_buttons/models/models.py |  2 +-
- web_calendar_color_field/i18n/it.po      | 14 ++++++++++++++
- web_company_color/models/assetsbundle.py |  2 +-
- web_company_color/models/ir_qweb.py      |  4 ++--
- 9 files changed, 51 insertions(+), 18 deletions(-)
- create mode 100644 web_calendar_color_field/i18n/it.po
+ web_company_color/i18n/ca.po | 30 +++++++++++++++++-------------
+ web_responsive/i18n/ca.po    | 13 +++++++------
+ 2 files changed, 24 insertions(+), 19 deletions(-)
 ./website
 From https://github.com/oca/website
  * branch              14.0       -> FETCH_HEAD
-Updating 5d08d263..437670e6
-Fast-forward
- .copier-answers.yml                         |  5 ++++-
- .eslintrc.yml                               |  2 +-
- .github/workflows/pre-commit.yml            | 29 ++++++++++++++++++++++-------
- .pre-commit-config.yaml                     |  6 +++---
- README.md                                   |  6 +++---
- website_legal_page/tests/test_controller.py |  2 +-
- 6 files changed, 34 insertions(+), 16 deletions(-)
+Already up to date.
