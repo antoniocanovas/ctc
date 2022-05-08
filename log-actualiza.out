@@ -1,449 +1,344 @@
 ./account-financial-tools
 From https://github.com/oca/account-financial-tools
  * branch                14.0       -> FETCH_HEAD
-Updating b164007f5..80f18ce69
+Updating 80f18ce69..4d0121f75
 Fast-forward
- .copier-answers.yml                                |   7 +-
- .github/workflows/test.yml                         |  69 ++++
- .travis.yml                                        |  42 --
- README.md                                          |  14 +-
- account_asset_management/__manifest__.py           |   2 +-
- account_asset_management/i18n/it.po                |  15 +-
- .../tests/test_account_asset_management.py         |   6 +-
- .../tests/test_asset_management_xls.py             |   2 +
- .../wizard/account_asset_remove.py                 |   9 +-
- account_asset_transfer/__manifest__.py             |   2 +-
- .../tests/test_account_asset_transfer.py           |   2 +
- account_chart_update/i18n/es.po                    |  12 +-
- account_chart_update/i18n/it.po                    |  11 +-
- account_check_deposit/i18n/it.po                   |  10 +-
- account_fiscal_year/__manifest__.py                |   7 +-
- account_fiscal_year/data/date_range_type.xml       |   7 +
- account_fiscal_year/i18n/account_fiscal_year.pot   |   1 +
- account_fiscal_year/i18n/fr.po                     |   1 +
- account_fiscal_year/i18n/fr_FR.po                  |   1 +
- account_fiscal_year/i18n/it.po                     |   1 +
- account_fiscal_year/i18n/nl.po                     |   1 +
- account_fiscal_year/security/ir.model.access.csv   |   2 +-
- account_journal_lock_date/__manifest__.py          |   2 +-
- account_journal_lock_date/i18n/it.po               |  13 +-
- .../tests/test_journal_lock_date.py                |   2 +
- account_loan/i18n/it.po                            |  11 +-
- account_lock_date_update/i18n/it.po                |  11 +-
- account_menu/i18n/it.po                            |   4 +-
- account_move_fiscal_month/README.rst               |  78 ++++
- account_move_fiscal_month/__init__.py              |   1 +
- account_move_fiscal_month/__manifest__.py          |  13 +
- .../i18n/account_move_fiscal_month.pot             |  50 +++
- account_move_fiscal_month/i18n/am.po               |  38 ++
- account_move_fiscal_month/i18n/ca.po               |  38 ++
- account_move_fiscal_month/i18n/de.po               |  40 ++
- account_move_fiscal_month/i18n/es.po               |  38 ++
- account_move_fiscal_month/i18n/es_EC.po            |  37 ++
- account_move_fiscal_month/i18n/fr.po               |  38 ++
- account_move_fiscal_month/i18n/gl.po               |  38 ++
- account_move_fiscal_month/i18n/hr.po               |  40 ++
- account_move_fiscal_month/i18n/hr_HR.po            |  40 ++
- account_move_fiscal_month/i18n/it.po               |  38 ++
- account_move_fiscal_month/i18n/nl.po               |  38 ++
- account_move_fiscal_month/i18n/pt.po               |  39 ++
- account_move_fiscal_month/i18n/pt_BR.po            |  40 ++
- account_move_fiscal_month/i18n/pt_PT.po            |  39 ++
- account_move_fiscal_month/i18n/sl.po               |  40 ++
- account_move_fiscal_month/i18n/tr_TR.po            |  37 ++
- account_move_fiscal_month/models/__init__.py       |   2 +
- account_move_fiscal_month/models/account_move.py   |  50 +++
- .../models/account_move_line.py                    |  13 +
- account_move_fiscal_month/readme/CONFIGURE.rst     |   1 +
- account_move_fiscal_month/readme/CONTRIBUTORS.rst  |   1 +
- account_move_fiscal_month/readme/DESCRIPTION.rst   |   1 +
- .../static/description/icon.png                    | Bin 0 -> 9455 bytes
- .../static/description/index.html                  | 424 +++++++++++++++++++++
- account_move_fiscal_month/tests/__init__.py        |   1 +
- .../tests/test_account_move_fiscal_month.py        | 196 ++++++++++
- account_move_fiscal_month/views/account_move.xml   |  35 ++
- .../views/account_move_line.xml                    |  41 ++
- account_move_template/i18n/it.po                   |   6 +-
- account_netting/i18n/it.po                         |  11 +-
+ README.md                                          |   6 +-
+ account_asset_batch_compute/README.rst             |  78 ++++
+ account_asset_batch_compute/__init__.py            |   2 +
+ account_asset_batch_compute/__manifest__.py        |  14 +
+ account_asset_batch_compute/data/queue_data.xml    |  23 ++
+ .../i18n/account_asset_batch_compute.pot           |  59 +++
+ account_asset_batch_compute/models/__init__.py     |   1 +
+ .../models/account_asset.py                        |  29 ++
+ .../readme/CONTRIBUTORS.rst                        |   3 +
+ account_asset_batch_compute/readme/DESCRIPTION.rst |   3 +
+ .../static/description/icon.svg                    |  79 ++++
+ .../static/description/index.html                  | 424 ++++++++++++++++++++
+ account_asset_batch_compute/tests/__init__.py      |   1 +
+ .../tests/test_account_asset_batch_compute.py      | 142 +++++++
+ account_asset_batch_compute/wizards/__init__.py    |   1 +
+ .../wizards/account_asset_compute.py               |  28 ++
+ .../wizards/account_asset_compute_views.xml        |  20 +
+ account_asset_number/README.rst                    |  86 ++++
+ account_asset_number/__init__.py                   |   4 +
+ account_asset_number/__manifest__.py               |  17 +
+ account_asset_number/i18n/account_asset_number.pot |  98 +++++
+ account_asset_number/models/__init__.py            |   4 +
+ account_asset_number/models/account_asset.py       |  47 +++
+ .../models/account_asset_profile.py                |  23 ++
+ account_asset_number/readme/CONFIGURE.rst          |   2 +
+ account_asset_number/readme/CONTRIBUTORS.rst       |   3 +
+ account_asset_number/readme/DESCRIPTION.rst        |   6 +
+ account_asset_number/report/__init__.py            |   3 +
+ .../report/account_asset_number_report.xml         |  65 ++++
+ .../report/account_asset_report_xls.py             |  24 ++
+ account_asset_number/static/description/icon.png   | Bin 0 -> 9455 bytes
+ account_asset_number/static/description/index.html | 431 +++++++++++++++++++++
+ account_asset_number/views/account_asset.xml       |  52 +++
+ .../views/account_asset_profile.xml                |  23 ++
+ account_move_line_tax_editable/__manifest__.py     |   2 +-
+ .../i18n/account_move_line_tax_editable.pot        |  10 +
+ account_move_line_tax_editable/i18n/de.po          |  25 ++
+ account_move_line_tax_editable/i18n/es.po          |  39 ++
+ account_move_line_tax_editable/i18n/es_EC.po       |  25 ++
+ account_move_line_tax_editable/i18n/fr.po          |  25 ++
+ account_move_line_tax_editable/i18n/hr.po          |  25 ++
+ account_move_line_tax_editable/i18n/pt.po          |  27 +-
+ account_move_line_tax_editable/i18n/tr_TR.po       |  25 ++
+ .../models/account_move_line.py                    |  29 ++
+ .../tests/test_account_move_line_tax_editable.py   |  26 +-
+ account_sequence_option/README.rst                 |  28 +-
+ account_sequence_option/__manifest__.py            |   7 +-
+ .../demo/account_demo_options.xml                  |  36 +-
+ account_sequence_option/readme/CONTRIBUTORS.rst    |   3 +
+ account_sequence_option/readme/DESCRIPTION.rst     |  25 +-
+ .../static/description/index.html                  |  26 +-
+ .../tests/test_account_sequence_option.py          |  13 +
+ .../views/account_move_views.xml                   |  15 +
  setup/_metapackage/VERSION.txt                     |   2 +-
- setup/_metapackage/setup.py                        |   1 +
- .../odoo/addons/account_move_fiscal_month          |   1 +
- setup/account_move_fiscal_month/setup.py           |   6 +
- test-requirements.txt                              |   1 -
- 67 files changed, 1706 insertions(+), 114 deletions(-)
- create mode 100644 .github/workflows/test.yml
- delete mode 100644 .travis.yml
- create mode 100644 account_fiscal_year/data/date_range_type.xml
- create mode 100644 account_move_fiscal_month/README.rst
- create mode 100644 account_move_fiscal_month/__init__.py
- create mode 100644 account_move_fiscal_month/__manifest__.py
- create mode 100644 account_move_fiscal_month/i18n/account_move_fiscal_month.pot
- create mode 100644 account_move_fiscal_month/i18n/am.po
- create mode 100644 account_move_fiscal_month/i18n/ca.po
- create mode 100644 account_move_fiscal_month/i18n/de.po
- create mode 100644 account_move_fiscal_month/i18n/es.po
- create mode 100644 account_move_fiscal_month/i18n/es_EC.po
- create mode 100644 account_move_fiscal_month/i18n/fr.po
- create mode 100644 account_move_fiscal_month/i18n/gl.po
- create mode 100644 account_move_fiscal_month/i18n/hr.po
- create mode 100644 account_move_fiscal_month/i18n/hr_HR.po
- create mode 100644 account_move_fiscal_month/i18n/it.po
- create mode 100644 account_move_fiscal_month/i18n/nl.po
- create mode 100644 account_move_fiscal_month/i18n/pt.po
- create mode 100644 account_move_fiscal_month/i18n/pt_BR.po
- create mode 100644 account_move_fiscal_month/i18n/pt_PT.po
- create mode 100644 account_move_fiscal_month/i18n/sl.po
- create mode 100644 account_move_fiscal_month/i18n/tr_TR.po
- create mode 100644 account_move_fiscal_month/models/__init__.py
- create mode 100644 account_move_fiscal_month/models/account_move.py
- create mode 100644 account_move_fiscal_month/models/account_move_line.py
- create mode 100644 account_move_fiscal_month/readme/CONFIGURE.rst
- create mode 100644 account_move_fiscal_month/readme/CONTRIBUTORS.rst
- create mode 100644 account_move_fiscal_month/readme/DESCRIPTION.rst
- create mode 100644 account_move_fiscal_month/static/description/icon.png
- create mode 100644 account_move_fiscal_month/static/description/index.html
- create mode 100644 account_move_fiscal_month/tests/__init__.py
- create mode 100644 account_move_fiscal_month/tests/test_account_move_fiscal_month.py
- create mode 100644 account_move_fiscal_month/views/account_move.xml
- create mode 100644 account_move_fiscal_month/views/account_move_line.xml
- create mode 120000 setup/account_move_fiscal_month/odoo/addons/account_move_fiscal_month
- create mode 100644 setup/account_move_fiscal_month/setup.py
+ setup/_metapackage/setup.py                        |   2 +
+ .../odoo/addons/account_asset_batch_compute        |   1 +
+ setup/account_asset_batch_compute/setup.py         |   6 +
+ .../odoo/addons/account_asset_number               |   1 +
+ setup/account_asset_number/setup.py                |   6 +
+ 59 files changed, 2200 insertions(+), 30 deletions(-)
+ create mode 100644 account_asset_batch_compute/README.rst
+ create mode 100644 account_asset_batch_compute/__init__.py
+ create mode 100644 account_asset_batch_compute/__manifest__.py
+ create mode 100644 account_asset_batch_compute/data/queue_data.xml
+ create mode 100644 account_asset_batch_compute/i18n/account_asset_batch_compute.pot
+ create mode 100644 account_asset_batch_compute/models/__init__.py
+ create mode 100644 account_asset_batch_compute/models/account_asset.py
+ create mode 100644 account_asset_batch_compute/readme/CONTRIBUTORS.rst
+ create mode 100644 account_asset_batch_compute/readme/DESCRIPTION.rst
+ create mode 100644 account_asset_batch_compute/static/description/icon.svg
+ create mode 100644 account_asset_batch_compute/static/description/index.html
+ create mode 100644 account_asset_batch_compute/tests/__init__.py
+ create mode 100644 account_asset_batch_compute/tests/test_account_asset_batch_compute.py
+ create mode 100644 account_asset_batch_compute/wizards/__init__.py
+ create mode 100644 account_asset_batch_compute/wizards/account_asset_compute.py
+ create mode 100644 account_asset_batch_compute/wizards/account_asset_compute_views.xml
+ create mode 100644 account_asset_number/README.rst
+ create mode 100644 account_asset_number/__init__.py
+ create mode 100644 account_asset_number/__manifest__.py
+ create mode 100644 account_asset_number/i18n/account_asset_number.pot
+ create mode 100644 account_asset_number/models/__init__.py
+ create mode 100644 account_asset_number/models/account_asset.py
+ create mode 100644 account_asset_number/models/account_asset_profile.py
+ create mode 100644 account_asset_number/readme/CONFIGURE.rst
+ create mode 100644 account_asset_number/readme/CONTRIBUTORS.rst
+ create mode 100644 account_asset_number/readme/DESCRIPTION.rst
+ create mode 100644 account_asset_number/report/__init__.py
+ create mode 100644 account_asset_number/report/account_asset_number_report.xml
+ create mode 100644 account_asset_number/report/account_asset_report_xls.py
+ create mode 100644 account_asset_number/static/description/icon.png
+ create mode 100644 account_asset_number/static/description/index.html
+ create mode 100644 account_asset_number/views/account_asset.xml
+ create mode 100644 account_asset_number/views/account_asset_profile.xml
+ create mode 100644 account_move_line_tax_editable/i18n/es.po
+ create mode 100644 account_sequence_option/views/account_move_views.xml
+ create mode 120000 setup/account_asset_batch_compute/odoo/addons/account_asset_batch_compute
+ create mode 100644 setup/account_asset_batch_compute/setup.py
+ create mode 120000 setup/account_asset_number/odoo/addons/account_asset_number
+ create mode 100644 setup/account_asset_number/setup.py
 ./bank-payment
 From https://github.com/oca/bank-payment
  * branch              14.0       -> FETCH_HEAD
-Updating 21ef9bd7..ea3846c4
+Updating ea3846c4..b6ba0807
 Fast-forward
- .copier-answers.yml                                |  8 +-
- .github/workflows/test.yml                         | 69 +++++++++++++++
- .travis.yml                                        | 42 ----------
- README.md                                          | 17 ++--
- account_banking_mandate_sale/i18n/ca.po            |  6 +-
- account_banking_sepa_direct_debit/__manifest__.py  |  2 +-
- .../models/account_banking_mandate.py              | 21 +++--
- account_payment_mode/README.rst                    |  4 +-
- account_payment_mode/__manifest__.py               |  4 +-
- account_payment_mode/static/description/index.html |  2 +-
- account_payment_order/README.rst                   |  6 +-
- account_payment_order/__manifest__.py              |  3 +-
- account_payment_order/i18n/ca.po                   | 21 ++---
- account_payment_order/models/account_move_line.py  | 24 ++++--
- account_payment_order/readme/CONTRIBUTORS.rst      |  2 +
- .../static/description/index.html                  |  3 +-
- .../tests/test_account_payment.py                  |  2 +
- .../tests/test_payment_order_inbound.py            |  3 +-
- .../tests/test_payment_order_outbound.py           | 98 ++++++++++++++++++++--
- account_payment_order_return/__manifest__.py       |  2 +-
- .../tests/test_account_payment_order_return.py     |  4 +-
- account_payment_partner/README.rst                 |  4 +-
- account_payment_partner/__manifest__.py            |  3 +-
- account_payment_partner/i18n/ca.po                 | 30 +++----
- .../static/description/index.html                  |  2 +-
- account_payment_purchase/i18n/ca.po                |  8 +-
- account_payment_purchase/i18n/it.po                |  9 +-
- account_payment_sale/i18n/ca.po                    | 15 ++--
- 28 files changed, 277 insertions(+), 137 deletions(-)
- create mode 100644 .github/workflows/test.yml
- delete mode 100644 .travis.yml
+ README.md                                          |  4 +-
+ account_banking_mandate/i18n/es.po                 |  8 +--
+ account_payment_order/__manifest__.py              |  2 +-
+ account_payment_order/models/account_move_line.py  | 43 +++++++++++---
+ .../tests/test_payment_order_outbound.py           | 69 +++++++++++++++++++++-
+ account_payment_purchase/__manifest__.py           |  2 +-
+ account_payment_purchase/models/account_invoice.py | 12 +++-
+ 7 files changed, 122 insertions(+), 18 deletions(-)
 ./community-data-files
 From https://github.com/oca/community-data-files
  * branch            14.0       -> FETCH_HEAD
-Updating e01a13a..5a2eaaa
-Fast-forward
- README.md                                  | 2 +-
- base_iso3166/README.rst                    | 4 ++--
- base_iso3166/__manifest__.py               | 3 ++-
- base_iso3166/static/description/index.html | 2 +-
- 4 files changed, 6 insertions(+), 5 deletions(-)
+Already up to date.
 ./l10n-spain
 From https://github.com/oca/l10n-spain
  * branch                14.0       -> FETCH_HEAD
-Updating 1bb767a25..cb6b2b672
+Updating cb6b2b672..811b78e7b
 Fast-forward
- README.md                                          |  4 ++--
- l10n_es_aeat_mod115/__manifest__.py                |  2 +-
- .../tests/test_l10n_es_aeat_mod115.py              |  5 +++--
- .../tests/test_l10n_es_intrastat_report.py         |  2 ++
+ README.md                                          |  6 +-
+ l10n_es_aeat/__manifest__.py                       |  2 +-
+ l10n_es_aeat/i18n/l10n_es_aeat.pot                 | 46 ++++++++++++++
+ l10n_es_aeat/models/res_partner.py                 | 29 ++++++++-
+ l10n_es_aeat/tests/test_l10n_es_aeat.py            | 20 ++++++
+ l10n_es_aeat/views/res_partner_view.xml            |  5 ++
+ l10n_es_aeat_sii_oca/__manifest__.py               |  2 +-
+ l10n_es_aeat_sii_oca/models/account_move.py        | 59 +++++++++---------
+ l10n_es_aeat_sii_oca/models/res_partner.py         |  9 ++-
+ .../tests/test_l10n_es_aeat_sii.py                 | 13 ++++
  l10n_es_vat_book/__manifest__.py                   |  2 +-
- l10n_es_vat_book/models/l10n_es_vat_book.py        | 22 +++++++++++++++-------
- .../tests/test_l10n_es_aeat_vat_book.py            | 19 +++++++++++++++++--
- 7 files changed, 41 insertions(+), 15 deletions(-)
+ l10n_es_vat_book/i18n/l10n_es_vat_book.pot         | 28 +++++++++
+ l10n_es_vat_book/models/l10n_es_vat_book.py        | 26 +++++++-
+ l10n_es_vat_book/report/vat_book_xlsx.py           |  6 +-
+ l10n_es_vat_book/views/l10n_es_vat_book.xml        | 71 +++++++++++++---------
+ 15 files changed, 248 insertions(+), 76 deletions(-)
 ./partner-contact
 From https://github.com/oca/partner-contact
  * branch                14.0       -> FETCH_HEAD
-Updating 46e929f0b..74618f7bd
+Updating 74618f7bd..257ed94d1
 Fast-forward
- partner_manual_rank/i18n/pt.po | 49 ++++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 49 insertions(+)
- create mode 100644 partner_manual_rank/i18n/pt.po
+ README.md                                          |   5 +-
+ partner_coc/README.rst                             |  90 +++++
+ partner_coc/__init__.py                            |   3 +
+ partner_coc/__manifest__.py                        |  17 +
+ partner_coc/data/res_partner_id_category_data.xml  |   7 +
+ partner_coc/i18n/am.po                             |  53 +++
+ partner_coc/i18n/ar.po                             |  54 +++
+ partner_coc/i18n/bg.po                             |  38 ++
+ partner_coc/i18n/bs.po                             |  39 ++
+ partner_coc/i18n/ca.po                             |  38 ++
+ partner_coc/i18n/cs.po                             |  38 ++
+ partner_coc/i18n/cs_CZ.po                          |  39 ++
+ partner_coc/i18n/da.po                             |  38 ++
+ partner_coc/i18n/de.po                             |  38 ++
+ partner_coc/i18n/el_GR.po                          |  39 ++
+ partner_coc/i18n/en_GB.po                          |  39 ++
+ partner_coc/i18n/es.po                             |  38 ++
+ partner_coc/i18n/es_CR.po                          |  39 ++
+ partner_coc/i18n/es_EC.po                          |  39 ++
+ partner_coc/i18n/es_MX.po                          |  39 ++
+ partner_coc/i18n/es_VE.po                          |  39 ++
+ partner_coc/i18n/et.po                             |  38 ++
+ partner_coc/i18n/eu.po                             |  38 ++
+ partner_coc/i18n/fi.po                             |  38 ++
+ partner_coc/i18n/fr.po                             |  38 ++
+ partner_coc/i18n/fr_CA.po                          |  39 ++
+ partner_coc/i18n/fr_CH.po                          |  39 ++
+ partner_coc/i18n/gl.po                             |  38 ++
+ partner_coc/i18n/hr.po                             |  41 ++
+ partner_coc/i18n/hr_HR.po                          |  40 ++
+ partner_coc/i18n/hu.po                             |  38 ++
+ partner_coc/i18n/it.po                             |  38 ++
+ partner_coc/i18n/ja.po                             |  38 ++
+ partner_coc/i18n/lt.po                             |  39 ++
+ partner_coc/i18n/lv.po                             |  39 ++
+ partner_coc/i18n/mk.po                             |  38 ++
+ partner_coc/i18n/mn.po                             |  38 ++
+ partner_coc/i18n/nb.po                             |  39 ++
+ partner_coc/i18n/nb_NO.po                          |  39 ++
+ partner_coc/i18n/nl.po                             |  40 ++
+ partner_coc/i18n/nl_BE.po                          |  39 ++
+ partner_coc/i18n/nl_NL.po                          |  40 ++
+ partner_coc/i18n/partner_coc.pot                   |  45 +++
+ partner_coc/i18n/pl.po                             |  40 ++
+ partner_coc/i18n/pt.po                             |  38 ++
+ partner_coc/i18n/pt_BR.po                          |  40 ++
+ partner_coc/i18n/pt_PT.po                          |  39 ++
+ partner_coc/i18n/ro.po                             |  39 ++
+ partner_coc/i18n/ru.po                             |  40 ++
+ partner_coc/i18n/sk.po                             |  38 ++
+ partner_coc/i18n/sl.po                             |  39 ++
+ partner_coc/i18n/sr@latin.po                       |  40 ++
+ partner_coc/i18n/sv.po                             |  38 ++
+ partner_coc/i18n/th.po                             |  38 ++
+ partner_coc/i18n/tr.po                             |  38 ++
+ partner_coc/i18n/tr_TR.po                          |  39 ++
+ partner_coc/i18n/vi.po                             |  38 ++
+ partner_coc/i18n/zh_CN.po                          |  39 ++
+ partner_coc/i18n/zh_TW.po                          |  39 ++
+ partner_coc/models/__init__.py                     |   3 +
+ partner_coc/models/res_partner.py                  |  15 +
+ partner_coc/readme/CONTRIBUTORS.rst                |   2 +
+ partner_coc/readme/DESCRIPTION.rst                 |   1 +
+ partner_coc/readme/USAGE.rst                       |   4 +
+ partner_coc/static/description/icon.png            | Bin 0 -> 9455 bytes
+ partner_coc/static/description/index.html          | 431 +++++++++++++++++++++
+ partner_coc/tests/__init__.py                      |   3 +
+ partner_coc/tests/test_partner_coc.py              |  55 +++
+ partner_coc/views/res_partner_view.xml             |  17 +
+ partner_company_group/README.rst                   |   1 +
+ partner_company_group/__manifest__.py              |   2 +-
+ partner_company_group/i18n/ca.po                   |  24 ++
+ partner_company_group/i18n/es.po                   |  47 ++-
+ .../i18n/partner_company_group.pot                 |  24 ++
+ partner_company_group/i18n/zh_CN.po                |  24 ++
+ partner_company_group/models/res_partner.py        |  53 ++-
+ partner_company_group/readme/CONTRIBUTORS.rst      |   1 +
+ .../static/description/index.html                  |   1 +
+ .../tests/test_partner_company_group.py            | 121 +++++-
+ partner_company_group/views/contact_view.xml       |  10 +
+ partner_contact_in_several_companies/i18n/it.po    |   9 +-
+ partner_manual_rank/i18n/es.po                     |  49 +++
+ partner_tier_validation/__manifest__.py            |   2 +-
+ .../i18n/partner_tier_validation.pot               |  15 +
+ partner_tier_validation/models/res_partner.py      |   4 +-
+ setup/_metapackage/VERSION.txt                     |   2 +-
+ setup/_metapackage/setup.py                        |   1 +
+ setup/partner_coc/odoo/addons/partner_coc          |   1 +
+ setup/partner_coc/setup.py                         |   6 +
+ 89 files changed, 3148 insertions(+), 30 deletions(-)
+ create mode 100644 partner_coc/README.rst
+ create mode 100644 partner_coc/__init__.py
+ create mode 100644 partner_coc/__manifest__.py
+ create mode 100644 partner_coc/data/res_partner_id_category_data.xml
+ create mode 100644 partner_coc/i18n/am.po
+ create mode 100644 partner_coc/i18n/ar.po
+ create mode 100644 partner_coc/i18n/bg.po
+ create mode 100644 partner_coc/i18n/bs.po
+ create mode 100644 partner_coc/i18n/ca.po
+ create mode 100644 partner_coc/i18n/cs.po
+ create mode 100644 partner_coc/i18n/cs_CZ.po
+ create mode 100644 partner_coc/i18n/da.po
+ create mode 100644 partner_coc/i18n/de.po
+ create mode 100644 partner_coc/i18n/el_GR.po
+ create mode 100644 partner_coc/i18n/en_GB.po
+ create mode 100644 partner_coc/i18n/es.po
+ create mode 100644 partner_coc/i18n/es_CR.po
+ create mode 100644 partner_coc/i18n/es_EC.po
+ create mode 100644 partner_coc/i18n/es_MX.po
+ create mode 100644 partner_coc/i18n/es_VE.po
+ create mode 100644 partner_coc/i18n/et.po
+ create mode 100644 partner_coc/i18n/eu.po
+ create mode 100644 partner_coc/i18n/fi.po
+ create mode 100644 partner_coc/i18n/fr.po
+ create mode 100644 partner_coc/i18n/fr_CA.po
+ create mode 100644 partner_coc/i18n/fr_CH.po
+ create mode 100644 partner_coc/i18n/gl.po
+ create mode 100644 partner_coc/i18n/hr.po
+ create mode 100644 partner_coc/i18n/hr_HR.po
+ create mode 100644 partner_coc/i18n/hu.po
+ create mode 100644 partner_coc/i18n/it.po
+ create mode 100644 partner_coc/i18n/ja.po
+ create mode 100644 partner_coc/i18n/lt.po
+ create mode 100644 partner_coc/i18n/lv.po
+ create mode 100644 partner_coc/i18n/mk.po
+ create mode 100644 partner_coc/i18n/mn.po
+ create mode 100644 partner_coc/i18n/nb.po
+ create mode 100644 partner_coc/i18n/nb_NO.po
+ create mode 100644 partner_coc/i18n/nl.po
+ create mode 100644 partner_coc/i18n/nl_BE.po
+ create mode 100644 partner_coc/i18n/nl_NL.po
+ create mode 100644 partner_coc/i18n/partner_coc.pot
+ create mode 100644 partner_coc/i18n/pl.po
+ create mode 100644 partner_coc/i18n/pt.po
+ create mode 100644 partner_coc/i18n/pt_BR.po
+ create mode 100644 partner_coc/i18n/pt_PT.po
+ create mode 100644 partner_coc/i18n/ro.po
+ create mode 100644 partner_coc/i18n/ru.po
+ create mode 100644 partner_coc/i18n/sk.po
+ create mode 100644 partner_coc/i18n/sl.po
+ create mode 100644 partner_coc/i18n/sr@latin.po
+ create mode 100644 partner_coc/i18n/sv.po
+ create mode 100644 partner_coc/i18n/th.po
+ create mode 100644 partner_coc/i18n/tr.po
+ create mode 100644 partner_coc/i18n/tr_TR.po
+ create mode 100644 partner_coc/i18n/vi.po
+ create mode 100644 partner_coc/i18n/zh_CN.po
+ create mode 100644 partner_coc/i18n/zh_TW.po
+ create mode 100644 partner_coc/models/__init__.py
+ create mode 100644 partner_coc/models/res_partner.py
+ create mode 100644 partner_coc/readme/CONTRIBUTORS.rst
+ create mode 100644 partner_coc/readme/DESCRIPTION.rst
+ create mode 100644 partner_coc/readme/USAGE.rst
+ create mode 100644 partner_coc/static/description/icon.png
+ create mode 100644 partner_coc/static/description/index.html
+ create mode 100644 partner_coc/tests/__init__.py
+ create mode 100644 partner_coc/tests/test_partner_coc.py
+ create mode 100644 partner_coc/views/res_partner_view.xml
+ create mode 100644 partner_manual_rank/i18n/es.po
+ create mode 120000 setup/partner_coc/odoo/addons/partner_coc
+ create mode 100644 setup/partner_coc/setup.py
 ./server-tools
 From https://github.com/oca/server-tools
  * branch                14.0       -> FETCH_HEAD
-Updating e6c12d43b..642450804
+Updating 642450804..7aaef5576
 Fast-forward
- README.md                                          |   8 +-
- attachment_queue/README.rst                        | 110 ++++
- attachment_queue/__init__.py                       |   1 +
- attachment_queue/__manifest__.py                   |  23 +
- attachment_queue/data/cron.xml                     |  16 +
- attachment_queue/data/ir_config_parameter.xml      |   7 +
- attachment_queue/data/mail_template.xml            |  18 +
- attachment_queue/demo/attachment_queue_demo.xml    |   9 +
- attachment_queue/i18n/attachment_queue.pot         | 486 ++++++++++++++++++
- attachment_queue/models/__init__.py                |   1 +
- attachment_queue/models/attachment_queue.py        | 106 ++++
- attachment_queue/readme/CONTRIBUTORS.rst           |   5 +
- attachment_queue/readme/DESCRIPTION.rst            |   3 +
- attachment_queue/readme/USAGE.rst                  |  16 +
- attachment_queue/security/ir.model.access.csv      |   3 +
- attachment_queue/static/description/form.png       | Bin 0 -> 76955 bytes
- attachment_queue/static/description/icon.png       | Bin 0 -> 9455 bytes
- attachment_queue/static/description/index.html     | 437 ++++++++++++++++
- attachment_queue/static/description/tree.png       | Bin 0 -> 42403 bytes
- attachment_queue/tests/__init__.py                 |   3 +
- attachment_queue/tests/test_attachment_queue.py    |  35 ++
- attachment_queue/views/attachment_queue_view.xml   | 153 ++++++
- attachment_synchronize/README.rst                  | 126 +++++
- attachment_synchronize/__init__.py                 |   1 +
- attachment_synchronize/__manifest__.py             |  28 ++
- attachment_synchronize/data/cron.xml               |  16 +
- .../demo/attachment_synchronize_task_demo.xml      |  24 +
- .../i18n/attachment_synchronize.pot                | 393 +++++++++++++++
- attachment_synchronize/models/__init__.py          |   1 +
- attachment_synchronize/models/attachment_queue.py  |  40 ++
- .../models/attachment_synchronize_task.py          | 230 +++++++++
- attachment_synchronize/models/storage_backend.py   |  67 +++
- attachment_synchronize/readme/CONTRIBUTORS.rst     |  10 +
- attachment_synchronize/readme/DESCRIPTION.rst      |   5 +
- attachment_synchronize/readme/USAGE.rst            |  19 +
- .../security/ir.model.access.csv                   |   2 +
- .../static/description/export_task.png             | Bin 0 -> 62223 bytes
- attachment_synchronize/static/description/icon.png | Bin 0 -> 9455 bytes
- .../static/description/import_task.png             | Bin 0 -> 69921 bytes
- .../static/description/index.html                  | 448 +++++++++++++++++
- attachment_synchronize/tests/__init__.py           |   2 +
- attachment_synchronize/tests/common.py             |  43 ++
- attachment_synchronize/tests/test_export.py        |  43 ++
- attachment_synchronize/tests/test_import.py        |  81 +++
- .../views/attachment_queue_views.xml               |  58 +++
- .../views/attachment_synchronize_task_views.xml    | 231 +++++++++
- .../views/storage_backend_views.xml                |  34 ++
- .../i18n/autovacuum_message_attachment.pot         |   4 +
- autovacuum_message_attachment/i18n/ca.po           |   4 +
- autovacuum_message_attachment/i18n/fr.po           |   4 +
- base_changeset/i18n/base_changeset.pot             |  15 +
- base_changeset/i18n/ca.po                          |  15 +
- base_changeset/i18n/es.po                          |  15 +
- base_changeset/i18n/it.po                          |  15 +
- base_generate_code/README.rst                      |  95 ++++
- base_generate_code/__init__.py                     |   1 +
- base_generate_code/__manifest__.py                 |  20 +
- base_generate_code/i18n/base_generate_code.pot     |  80 +++
- base_generate_code/i18n/fr.po                      |  84 ++++
- base_generate_code/models/__init__.py              |   1 +
- base_generate_code/models/code_format_mixin.py     |  89 ++++
- base_generate_code/readme/CONTRIBUTORS.rst         |   2 +
- base_generate_code/readme/DESCRIPTION.rst          |   1 +
- base_generate_code/readme/USAGE.rst                |   9 +
- base_generate_code/security/ir.model.access.csv    |   2 +
- base_generate_code/static/description/icon.png     | Bin 0 -> 9455 bytes
- base_generate_code/static/description/index.html   | 435 ++++++++++++++++
- base_generate_code/tests/__init__.py               |   1 +
- base_generate_code/tests/fake_models.py            |  28 ++
- base_generate_code/tests/test_code_format_mixin.py |  62 +++
- base_jsonify/README.rst                            | 175 +------
- base_jsonify/__init__.py                           |   1 -
- base_jsonify/__manifest__.py                       |  24 +-
- base_jsonify/i18n/base_jsonify.pot                 | 215 --------
- base_jsonify/i18n/ca.po                            | 229 ---------
- base_jsonify/i18n/zh_CN.po                         | 231 ---------
- base_jsonify/readme/CONTRIBUTORS.rst               |   2 +
- base_jsonify/readme/DESCRIPTION.rst                | 166 +-----
- base_jsonify/readme/ROADMAP.rst                    |   1 +
- base_jsonify/static/description/index.html         | 161 +-----
- .../i18n/base_name_search_improved.pot             |   4 +-
- base_name_search_improved/i18n/ca.po               |   4 +-
- base_name_search_improved/i18n/de.po               |   4 +-
- base_name_search_improved/i18n/es.po               |   4 +-
- base_name_search_improved/i18n/es_ES.po            |   4 +-
- base_name_search_improved/i18n/eu.po               |   4 +-
- base_name_search_improved/i18n/fi.po               |   4 +-
- base_name_search_improved/i18n/fr.po               |   4 +-
- base_name_search_improved/i18n/hr.po               |   4 +-
- base_name_search_improved/i18n/hr_HR.po            |   4 +-
- base_name_search_improved/i18n/it.po               |   4 +-
- base_name_search_improved/i18n/nb_NO.po            |   4 +-
- base_name_search_improved/i18n/nl.po               |   4 +-
- base_name_search_improved/i18n/pt_BR.po            |   4 +-
- base_name_search_improved/i18n/sl.po               |   4 +-
- base_name_search_improved/i18n/tr.po               |   4 +-
- base_name_search_improved/i18n/tr_TR.po            |   4 +-
- base_name_search_improved/i18n/zh_CN.po            |   4 +-
- base_view_inheritance_extension/__manifest__.py    |   2 +-
- .../models/ir_ui_view.py                           |   9 +-
- jsonifier/README.rst                               | 245 +++++++++
- jsonifier/__init__.py                              |   1 +
- jsonifier/__manifest__.py                          |  26 +
- {base_jsonify => jsonifier}/demo/export_demo.xml   |   0
- .../demo/ir.exports.line.csv                       |   0
- {base_jsonify => jsonifier}/demo/resolver_demo.xml |   0
- jsonifier/i18n/ca.po                               | 236 +++++++++
- jsonifier/i18n/jsonifier.pot                       | 235 +++++++++
- jsonifier/i18n/zh_CN.po                            | 238 +++++++++
- {base_jsonify => jsonifier}/models/__init__.py     |   0
- {base_jsonify => jsonifier}/models/ir_exports.py   |   0
- .../models/ir_exports_line.py                      |   0
- .../models/ir_exports_resolver.py                  |   0
- {base_jsonify => jsonifier}/models/models.py       |   0
- {base_jsonify => jsonifier}/models/utils.py        |   0
- jsonifier/readme/CONTRIBUTORS.rst                  |   6 +
- jsonifier/readme/DESCRIPTION.rst                   | 166 ++++++
- .../security/ir.model.access.csv                   |   0
- jsonifier/static/description/icon.png              | Bin 0 -> 9455 bytes
- jsonifier/static/description/index.html            | 555 +++++++++++++++++++++
- {base_jsonify => jsonifier}/tests/__init__.py      |   0
- .../tests/test_get_parser.py                       |   6 +-
- {base_jsonify => jsonifier}/tests/test_helpers.py  |   0
- .../tests/test_ir_exports_line.py                  |   2 +-
- .../views/ir_exports_resolver_view.xml             |   0
- .../views/ir_exports_view.xml                      |   0
- setup/_metapackage/VERSION.txt                     |   2 +-
- setup/_metapackage/setup.py                        |   4 +
- .../attachment_queue/odoo/addons/attachment_queue  |   1 +
- setup/attachment_queue/setup.py                    |   6 +
- .../odoo/addons/attachment_synchronize             |   1 +
- setup/attachment_synchronize/setup.py              |   6 +
- .../odoo/addons/base_generate_code                 |   1 +
- setup/base_generate_code/setup.py                  |   6 +
- setup/jsonifier/odoo/addons/jsonifier              |   1 +
- setup/jsonifier/setup.py                           |   6 +
- 136 files changed, 6179 insertions(+), 1183 deletions(-)
- create mode 100644 attachment_queue/README.rst
- create mode 100644 attachment_queue/__init__.py
- create mode 100644 attachment_queue/__manifest__.py
- create mode 100644 attachment_queue/data/cron.xml
- create mode 100644 attachment_queue/data/ir_config_parameter.xml
- create mode 100644 attachment_queue/data/mail_template.xml
- create mode 100644 attachment_queue/demo/attachment_queue_demo.xml
- create mode 100644 attachment_queue/i18n/attachment_queue.pot
- create mode 100644 attachment_queue/models/__init__.py
- create mode 100644 attachment_queue/models/attachment_queue.py
- create mode 100644 attachment_queue/readme/CONTRIBUTORS.rst
- create mode 100644 attachment_queue/readme/DESCRIPTION.rst
- create mode 100644 attachment_queue/readme/USAGE.rst
- create mode 100644 attachment_queue/security/ir.model.access.csv
- create mode 100644 attachment_queue/static/description/form.png
- create mode 100644 attachment_queue/static/description/icon.png
- create mode 100644 attachment_queue/static/description/index.html
- create mode 100644 attachment_queue/static/description/tree.png
- create mode 100644 attachment_queue/tests/__init__.py
- create mode 100644 attachment_queue/tests/test_attachment_queue.py
- create mode 100644 attachment_queue/views/attachment_queue_view.xml
- create mode 100644 attachment_synchronize/README.rst
- create mode 100644 attachment_synchronize/__init__.py
- create mode 100644 attachment_synchronize/__manifest__.py
- create mode 100644 attachment_synchronize/data/cron.xml
- create mode 100644 attachment_synchronize/demo/attachment_synchronize_task_demo.xml
- create mode 100644 attachment_synchronize/i18n/attachment_synchronize.pot
- create mode 100644 attachment_synchronize/models/__init__.py
- create mode 100644 attachment_synchronize/models/attachment_queue.py
- create mode 100644 attachment_synchronize/models/attachment_synchronize_task.py
- create mode 100644 attachment_synchronize/models/storage_backend.py
- create mode 100644 attachment_synchronize/readme/CONTRIBUTORS.rst
- create mode 100644 attachment_synchronize/readme/DESCRIPTION.rst
- create mode 100644 attachment_synchronize/readme/USAGE.rst
- create mode 100644 attachment_synchronize/security/ir.model.access.csv
- create mode 100644 attachment_synchronize/static/description/export_task.png
- create mode 100644 attachment_synchronize/static/description/icon.png
- create mode 100644 attachment_synchronize/static/description/import_task.png
- create mode 100644 attachment_synchronize/static/description/index.html
- create mode 100644 attachment_synchronize/tests/__init__.py
- create mode 100644 attachment_synchronize/tests/common.py
- create mode 100644 attachment_synchronize/tests/test_export.py
- create mode 100644 attachment_synchronize/tests/test_import.py
- create mode 100644 attachment_synchronize/views/attachment_queue_views.xml
- create mode 100644 attachment_synchronize/views/attachment_synchronize_task_views.xml
- create mode 100644 attachment_synchronize/views/storage_backend_views.xml
- create mode 100644 base_generate_code/README.rst
- create mode 100644 base_generate_code/__init__.py
- create mode 100644 base_generate_code/__manifest__.py
- create mode 100644 base_generate_code/i18n/base_generate_code.pot
- create mode 100644 base_generate_code/i18n/fr.po
- create mode 100644 base_generate_code/models/__init__.py
- create mode 100644 base_generate_code/models/code_format_mixin.py
- create mode 100644 base_generate_code/readme/CONTRIBUTORS.rst
- create mode 100644 base_generate_code/readme/DESCRIPTION.rst
- create mode 100644 base_generate_code/readme/USAGE.rst
- create mode 100644 base_generate_code/security/ir.model.access.csv
- create mode 100644 base_generate_code/static/description/icon.png
- create mode 100644 base_generate_code/static/description/index.html
- create mode 100644 base_generate_code/tests/__init__.py
- create mode 100644 base_generate_code/tests/fake_models.py
- create mode 100644 base_generate_code/tests/test_code_format_mixin.py
- delete mode 100644 base_jsonify/i18n/ca.po
- delete mode 100644 base_jsonify/i18n/zh_CN.po
- create mode 100644 base_jsonify/readme/ROADMAP.rst
- create mode 100644 jsonifier/README.rst
- create mode 100644 jsonifier/__init__.py
- create mode 100644 jsonifier/__manifest__.py
- rename {base_jsonify => jsonifier}/demo/export_demo.xml (100%)
- rename {base_jsonify => jsonifier}/demo/ir.exports.line.csv (100%)
- rename {base_jsonify => jsonifier}/demo/resolver_demo.xml (100%)
- create mode 100644 jsonifier/i18n/ca.po
- create mode 100644 jsonifier/i18n/jsonifier.pot
- create mode 100644 jsonifier/i18n/zh_CN.po
- rename {base_jsonify => jsonifier}/models/__init__.py (100%)
- rename {base_jsonify => jsonifier}/models/ir_exports.py (100%)
- rename {base_jsonify => jsonifier}/models/ir_exports_line.py (100%)
- rename {base_jsonify => jsonifier}/models/ir_exports_resolver.py (100%)
- rename {base_jsonify => jsonifier}/models/models.py (100%)
- rename {base_jsonify => jsonifier}/models/utils.py (100%)
- create mode 100644 jsonifier/readme/CONTRIBUTORS.rst
- create mode 100644 jsonifier/readme/DESCRIPTION.rst
- rename {base_jsonify => jsonifier}/security/ir.model.access.csv (100%)
- create mode 100644 jsonifier/static/description/icon.png
- create mode 100644 jsonifier/static/description/index.html
- rename {base_jsonify => jsonifier}/tests/__init__.py (100%)
- rename {base_jsonify => jsonifier}/tests/test_get_parser.py (98%)
- rename {base_jsonify => jsonifier}/tests/test_helpers.py (100%)
- rename {base_jsonify => jsonifier}/tests/test_ir_exports_line.py (97%)
- rename {base_jsonify => jsonifier}/views/ir_exports_resolver_view.xml (100%)
- rename {base_jsonify => jsonifier}/views/ir_exports_view.xml (100%)
- create mode 120000 setup/attachment_queue/odoo/addons/attachment_queue
- create mode 100644 setup/attachment_queue/setup.py
- create mode 120000 setup/attachment_synchronize/odoo/addons/attachment_synchronize
- create mode 100644 setup/attachment_synchronize/setup.py
- create mode 120000 setup/base_generate_code/odoo/addons/base_generate_code
- create mode 100644 setup/base_generate_code/setup.py
- create mode 120000 setup/jsonifier/odoo/addons/jsonifier
- create mode 100644 setup/jsonifier/setup.py
+ README.md                  |  2 +-
+ jsonifier/__manifest__.py  |  2 +-
+ jsonifier/models/models.py | 16 ++++++++++++----
+ 3 files changed, 14 insertions(+), 6 deletions(-)
 ./server-ux
 From https://github.com/oca/server-ux
  * branch              14.0       -> FETCH_HEAD
-Updating 6e8078d8..fff80281
+Updating fff80281..1ddf4573
 Fast-forward
- README.md                                          |   2 +-
- base_custom_filter/i18n/fr.po                      | 130 ++++++++++++++++++++
- base_custom_filter/i18n/it.po                      | 132 +++++++++++++++++++++
- base_tier_validation/__manifest__.py               |   2 +-
- base_tier_validation/i18n/base_tier_validation.pot |  33 ++++++
- base_tier_validation/i18n/es.po                    |  33 ++++++
- base_tier_validation/i18n/es_MX.po                 |  33 ++++++
- base_tier_validation/i18n/fr.po                    |  33 ++++++
- base_tier_validation/i18n/it.po                    |  33 ++++++
- base_tier_validation/i18n/nl_NL.po                 |  33 ++++++
- base_tier_validation/i18n/sv.po                    |  33 ++++++
- base_tier_validation/i18n/zh_CN.po                 |  33 ++++++
- base_tier_validation/models/tier_validation.py     |  28 +++++
- 13 files changed, 556 insertions(+), 2 deletions(-)
- create mode 100644 base_custom_filter/i18n/fr.po
+ date_range/i18n/fr.po | 103 +++++++++++++++++++++++++++++---------------------
+ 1 file changed, 59 insertions(+), 44 deletions(-)
 ./web
 From https://github.com/oca/web
  * branch              14.0       -> FETCH_HEAD
-Updating 025a891c..afab6050
+Updating afab6050..2fa5730e
 Fast-forward
- web_company_color/i18n/ca.po | 30 +++++++++++++++++-------------
- web_responsive/i18n/ca.po    | 13 +++++++------
- 2 files changed, 24 insertions(+), 19 deletions(-)
+ .copier-answers.yml                              |  7 +-
+ .github/workflows/test.yml                       | 81 ++++++++++++++++++++++++
+ .travis.yml                                      | 42 ------------
+ README.md                                        |  5 +-
+ web_drop_target/README.rst                       |  6 +-
+ web_drop_target/__init__.py                      |  2 +-
+ web_drop_target/__manifest__.py                  |  6 +-
+ web_drop_target/static/description/index.html    |  2 +-
+ web_drop_target/static/src/js/web_drop_target.js |  2 +-
+ 9 files changed, 97 insertions(+), 56 deletions(-)
+ create mode 100644 .github/workflows/test.yml
+ delete mode 100644 .travis.yml
 ./website
 From https://github.com/oca/website
  * branch              14.0       -> FETCH_HEAD
